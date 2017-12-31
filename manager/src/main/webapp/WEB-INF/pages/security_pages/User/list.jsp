@@ -34,7 +34,7 @@
                                             <div class="from-group col-md-12">
                                                 <label for="loginName">登录名称</label>
                                                 <input type="text" class="form-control" id="loginName" name="loginName"
-                                                       value="${query.loginName}">
+                                                       value="${userQuery.loginName}">
                                             </div>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                                             <div class="from-group col-md-12">
                                                 <label>用户状态</label>
                                                 <mytag:select styleClass="form-control" dictName="USER_STATUS"
-                                                              name="status"
+                                                              name="status" value="${userQuery.status}"
                                                               id="user_status"></mytag:select>
                                             </div>
                                         </div>
@@ -156,8 +156,8 @@
 <script>
     // 查询数据
     var data = {};
-    data.loginName = '${query.loginName}';
-    data.status = '${query.status}';
+    data.loginName = '${userQuery.loginName}';
+    data.status = '${userQuery.status}';
     data.size = ${page.getSize()};
     data.page = ${page.getNumber()};
     // 排序数据
