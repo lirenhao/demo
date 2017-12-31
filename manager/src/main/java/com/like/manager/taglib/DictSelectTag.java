@@ -69,7 +69,7 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 			tagWriter.writeAttribute("size", size);
 		}
 		if (styleClass != null) {
-			tagWriter.writeAttribute("styleClass", styleClass);
+			tagWriter.writeAttribute("class", styleClass);
 		}
 		if (onchange != null) {
 			tagWriter.writeAttribute("onchange", onchange);
@@ -98,19 +98,19 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 			//反射Object的itemKey、itemValue字段的值。其中itemKey、itemValue是标签中的属性。不可以为null或者''!
 			for(Object obj : items){
 				
-				String itemKey_vaule = "";
-				String itemValue_vaule = "";
+				String itemKey_value = "";
+				String itemValue_value = "";
 				
 				try {
-					itemKey_vaule = obj.getClass().getMethod(creatMethodName(itemKey)).invoke(obj).toString();
-					itemValue_vaule = obj.getClass().getMethod(creatMethodName(itemValue)).invoke(obj).toString();
+					itemKey_value = obj.getClass().getMethod(createMethodName(itemKey)).invoke(obj).toString();
+					itemValue_value = obj.getClass().getMethod(createMethodName(itemValue)).invoke(obj).toString();
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
 				//转换成DictItem对象
 				DictItem dictItem = new DictItem();
-				dictItem.setDictCode(itemKey_vaule);
-				dictItem.setDictName(itemValue_vaule);
+				dictItem.setDictCode(itemKey_value);
+				dictItem.setDictName(itemValue_value);
 				
 				list.add(dictItem);
 			}
@@ -119,17 +119,17 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 		Map<String, String> attrs = null;
 		
 		if(list != null && list.size() != 0){
-			creatOptin("", "--请选择--");
+			createOption("", "--请选择--");
 			
 			for(DictItem dictItem :list){
 				attrs = new HashMap<String, String>();
 				if(dictItem.getDictCode().equals(value)){
 					attrs.put("selected", "selected");
 				}
-				creatOptin(dictItem.getDictCode()+"", dictItem.getDictName(),attrs);
+				createOption(dictItem.getDictCode()+"", dictItem.getDictName(),attrs);
 			}
 		}else{
-			creatOptin("", "没有数据");
+			createOption("", "没有数据");
 		}
 		
 		tagWriter.endTag();
@@ -137,7 +137,7 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 	}
 	
 	//拼取方法名称
-	private String creatMethodName(String fieldName){
+	private String createMethodName(String fieldName){
 		
 		if(fieldName == null || fieldName.equals("")){
 			throw new RuntimeException("fieldName mast be not null or ''");
@@ -152,7 +152,7 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 		return buf.toString();
 	}
 	
-	private void creatOptin(String value, String text,Map<String, String> attrs ) throws JspException {
+	private void createOption(String value, String text, Map<String, String> attrs ) throws JspException {
 		tagWriter.startTag("option");
 		if(attrs != null && attrs.size()>0){
 			Iterator<String> iterator =  attrs.keySet().iterator();
@@ -166,11 +166,9 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 		tagWriter.endTag();
 	}
 	
-	private void creatOptin(String value, String text) throws JspException {
-		creatOptin(value, text, null);
+	private void createOption(String value, String text) throws JspException {
+		createOption(value, text, null);
 	}
-	
-	
 
 	public String getValue() {
 		return value;
@@ -307,6 +305,4 @@ public class DictSelectTag extends AbstractHtmlElementTag {
 	public void setItemValue(String itemValue) {
 		this.itemValue = itemValue;
 	} 
-	
-	
 }

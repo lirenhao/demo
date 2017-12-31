@@ -1,6 +1,8 @@
 package com.like.manager.service;
 
+import com.like.manager.dao.RoleDao;
 import com.like.manager.dao.UserDao;
+import com.like.manager.model.Role;
 import com.like.manager.model.User;
 import com.like.manager.query.UserQuery;
 import com.like.manager.util.Md5KeyBean;
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -19,6 +23,12 @@ public class UserService {
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private RoleDao roleDao;
+
+    public User findOne(Long id) {
+        return userDao.findOne(id);
+    }
 
     /**
      * 增加用户
@@ -105,9 +115,25 @@ public class UserService {
     /**
      * 根据查询登陆名的个数验证登陆名是否存在
      */
-    public String countByLoginName(String loginName){
-       int num=userDao.countByLoginName(loginName);
-       return String.valueOf(num);
+    public String countByLoginName(String loginName) {
+        int num = userDao.countByLoginName(loginName);
+        return String.valueOf(num);
+    }
+
+    /**
+     * 保存分配角色数据
+     */
+    public void saveRoles(Long id, String[] roles) {
+        List<Role> roleList = new ArrayList<>();
+        if (roles != null && roles.length > 0) {
+            for (String str : roles) {
+                Role role = roleDao.findOne(Long.parseLong(str));
+                roleList.add(role);
+            }
+        }
+        User user = userDao.findOne(id);
+        user.setRoles(roleList);
+        userDao.saveAndFlush(user);
     }
 
     /**
@@ -118,5 +144,4 @@ public class UserService {
     private String getCurrTime() {
         return new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
     }
-
 }

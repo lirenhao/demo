@@ -46,6 +46,10 @@ public class RoleService {
         return roleDao.findOne(id);
     }
 
+    public List<Role> findAll() {
+        return roleDao.findAll();
+    }
+
     public Page<Role> findAll(Specification<Role> query, Pageable pageable) {
         return roleDao.findAll(query, pageable);
     }

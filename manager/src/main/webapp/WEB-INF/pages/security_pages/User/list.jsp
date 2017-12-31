@@ -23,7 +23,7 @@
             <div class="col-lg-12">
                 <div class="main-box clearfix">
                     <header class="main-box-header clearfix">
-                        <h2 class="pull-left">查询</h2>
+                        <h2 class="pull-left">用户列表</h2>
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="row main-box-body">
@@ -32,9 +32,8 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="from-group col-md-12">
-                                                <label for="user_list_search_userLoginName">登录名称
-                                                </label>
-                                                <input type="text" id="user_list_search_userLoginName" name="loginName"
+                                                <label for="loginName">登录名称</label>
+                                                <input type="text" class="form-control" id="loginName" name="loginName"
                                                        value="${query.loginName}">
                                             </div>
                                         </div>
@@ -43,7 +42,7 @@
                                         <div class="row">
                                             <div class="from-group col-md-12">
                                                 <label>用户状态</label>
-                                                <mytag:select dictName="USER_STATUS" name="status"
+                                                <mytag:select styleClass="form-control" dictName="USER_STATUS" name="status"
                                                               id="user_status"></mytag:select>
                                             </div>
                                         </div>
@@ -89,10 +88,11 @@
                                                 <td class="text-center">${item.loginName}</td>
                                                 <td class="text-center">${item.userName}</td>
                                                 <td class="text-center">
-                                                    <mytag:write dictName="USER_STATUS" value="${item.status}"></mytag:write>
+                                                    <mytag:write dictName="USER_STATUS"
+                                                                 value="${item.status}"></mytag:write>
                                                 </td>
                                                 <td class="text-center">${item.createDate}</td>
-                                                <td style="width: 20%;">
+                                                <td class="text-center">
                                                     <c:if test="${item.status eq '0'}">
                                                         <a class="table-link"
                                                            href="javascript:void(0);"
@@ -107,6 +107,11 @@
                                                             关闭用户
                                                         </a>
                                                     </c:if>
+                                                    <a data-toggle="modal"
+                                                       href="<%=basePath%>/user/role?id=${item.id}"
+                                                       data-target="#myModal" class="table-link">
+                                                        分配角色
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

@@ -1,7 +1,9 @@
 package com.like.manager.controller;
 
+import com.like.manager.model.Role;
 import com.like.manager.model.User;
 import com.like.manager.query.UserQuery;
+import com.like.manager.service.RoleService;
 import com.like.manager.service.UserService;
 import com.like.manager.util.Md5KeyBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 查询用户
@@ -116,6 +123,31 @@ public class UserController extends BaseController {
     @RequestMapping("/openUser")
     public String openUser(Long userId) {
         userService.openOrCloseUser(userId, true);
+        return "redirect:list";
+    }
+
+    /**
+     * 进入分配角色页面
+     */
+    @RequestMapping("/role")
+    public String role(Long id, Model model) {
+        //用户分组
+        User user = userService.findOne(id);
+        //所有的角色
+        List<Role> roleList = roleService.findAll();
+
+        model.addAttribute("user", user);
+        model.addAttribute("roleList",roleList );
+
+        return "security_pages/User/role";
+    }
+
+    /**
+     * 保存分配角色数据
+     */
+    @RequestMapping("/saveRoles")
+    public String saveRoles(Long id, String[] roles) {
+        userService.saveRoles(id, roles);
         return "redirect:list";
     }
 
