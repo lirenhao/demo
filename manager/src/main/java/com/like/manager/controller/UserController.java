@@ -41,7 +41,7 @@ public class UserController extends BaseController {
      * 进入新增用户页面
      */
     @RequestMapping("/insert")
-    public String insert(Model model) {
+    public String insert() {
         return "security_pages/User/create";
     }
 
@@ -110,8 +110,8 @@ public class UserController extends BaseController {
      * 用户状态(0:停用,1启用)
      */
     @RequestMapping("/closeUser")
-    public String closeUser(Long userId) {
-        userService.openOrCloseUser(userId, false);
+    public String closeUser(Long id) {
+        userService.openOrCloseUser(id, false);
         return "redirect:list";
     }
 
@@ -120,8 +120,8 @@ public class UserController extends BaseController {
      * 用户状态(0:停用,1启用)
      */
     @RequestMapping("/openUser")
-    public String openUser(Long userId) {
-        userService.openOrCloseUser(userId, true);
+    public String openUser(Long id) {
+        userService.openOrCloseUser(id, true);
         return "redirect:list";
     }
 

@@ -42,7 +42,8 @@
                                         <div class="row">
                                             <div class="from-group col-md-12">
                                                 <label>用户状态</label>
-                                                <mytag:select styleClass="form-control" dictName="USER_STATUS" name="status"
+                                                <mytag:select styleClass="form-control" dictName="USER_STATUS"
+                                                              name="status"
                                                               id="user_status"></mytag:select>
                                             </div>
                                         </div>
@@ -97,25 +98,37 @@
                                                         <a class="table-link"
                                                            href="javascript:void(0);"
                                                            onclick="deleteClick('您确定要开启${item.loginName}吗？', '<%=basePath%>/user/openUser?id=${item.id}')">
-                                                            开启用户
+                                                            <span class="fa-stack">
+                                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                                <i class="fa fa-unlock fa-stack-1x fa-inverse"></i>
+                                                            </span>
                                                         </a>
                                                     </c:if>
                                                     <c:if test="${item.status eq '1'}">
-                                                        <a class="table-link danger"
+                                                        <a class="table-link"
                                                            href="javascript:void(0);"
                                                            onclick="deleteClick('您确定要关闭${item.loginName}吗？', '<%=basePath%>/user/closeUser?id=${item.id}')">
-                                                            关闭用户
+                                                             <span class="fa-stack">
+                                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                                <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                                                            </span>
                                                         </a>
                                                     </c:if>
                                                     <a data-toggle="modal"
                                                        href="<%=basePath%>/user/role?id=${item.id}"
                                                        data-target="#myModal" class="table-link">
-                                                        分配角色
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
+                                                        </span>
                                                     </a>
                                                     <a class="table-link"
                                                        href="javascript:void(0);"
                                                        onclick="deleteClick('您确定要重置${item.loginName}的密码吗？,重置密码后密码为：“111111”。', '<%=basePath%>/user/resetUserPwd?userId=${item.id}')">
-                                                        重置密码
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-key fa-stack-1x fa-inverse"></i>
+                                                        </span>
                                                     </a>
                                                 </td>
                                             </tr>
