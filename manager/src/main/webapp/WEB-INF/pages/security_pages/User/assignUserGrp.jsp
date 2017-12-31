@@ -18,8 +18,8 @@
 			<label for="user_list_create_loginName">用户登录名:</label>
 			<input type="text" class="form-control" id="user_list_create_loginName" name="loginName"
 				   value="${user.loginName}" readonly>
-			<input type="hidden" class="form-control" id="user_list_create_userId" name="userId"
-				   value="${user.userId}" readonly>
+			<input type="hidden" class="form-control" id="user_list_create_userId" name="id"
+				   value="${user.id}" readonly>
 		</div>
 		<div class="form-group">
 			<label for="user_list_create_orgName">机构:</label>

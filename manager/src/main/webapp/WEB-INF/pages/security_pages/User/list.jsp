@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="/WEB-INF/mytag.tld" prefix="mytag"%>
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="mytag" %>
 <%
     String basePath = request.getContextPath();
 %>
@@ -32,41 +32,7 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="from-group col-md-12">
-                                                <label for="user_list_search_orgName">机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构:</label>
-                                                <select path="s_lowerOrgId" id="user_list_search_orgName" name="orgId"
-                                                        onchange="addUserGrpOption(this.value);">
-                                                    <option value="">--请选择--</option>
-                                                    <c:forEach items="${orgList}" var="orgItem">
-                                                        <option value="${orgItem.orgId}"
-                                                                <c:if test="${orgItem.orgId eq query.orgId}">selected</c:if>>
-                                                                ${orgItem.name}
-                                                        </option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="from-group col-md-12">
-                                                <label for="user_list_search_userGrpName">用户分组:
-                                                </label>
-                                                <select path="s_lowerOrgId" id="user_list_search_userGrpName"
-                                                        name="userGrpId">
-                                                    <option value="">--请选择--</option>
-                                                    <%--<c:forEach items="userGrpList" var="userGrpItem">--%>
-                                                    <%--<option value="${userGrpItem.userGrpId}">${userGrpItem.userGrpName}</option>--%>
-                                                    <%--</c:forEach>--%>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="from-group col-md-12">
-                                                <label for="user_list_search_userLoginName">用户登录名:
+                                                <label for="user_list_search_userLoginName">登录名称
                                                 </label>
                                                 <input type="text" id="user_list_search_userLoginName" name="loginName"
                                                        value="${query.loginName}">
@@ -76,31 +42,9 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="from-group col-md-12">
-                                                <%--<label for="user_list_search_status">状态:--%>
-                                                <%--</label>--%>
-                                                <%--<select path="s_lowerOrgId" id="user_list_search_status" name="status">--%>
-                                                    <%--<option value="">--请选择--</option>--%>
-                                                    <%--<c:if test="${query ne null&&query.status ne null}">--%>
-                                                        <%--<option value="0"--%>
-                                                                <%--<c:if test="${'0' eq query.status}">selected</c:if> >--%>
-                                                            <%--停用--%>
-                                                        <%--</option>--%>
-                                                        <%--<option value="1"--%>
-                                                                <%--<c:if test="${'1' eq query.status}">selected</c:if>>--%>
-                                                            <%--启用--%>
-                                                        <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${query eq null||query.status eq null}">--%>
-                                                        <%--<option value="0">--%>
-                                                            <%--停用--%>
-                                                        <%--</option>--%>
-                                                        <%--<option value="1">--%>
-                                                            <%--启用--%>
-                                                        <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                <%--</select>--%>
-                                                    <label >状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态:</label>
-                                                    <mytag:select dictName="D_USER_STATUS" name="status" id="user_list_search_status"></mytag:select>
+                                                <label>用户状态</label>
+                                                <mytag:select dictName="USER_STATUS" name="status"
+                                                              id="user_status"></mytag:select>
                                             </div>
                                         </div>
                                     </div>
@@ -121,20 +65,16 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">
-                                        <span>机构</span>
+                                        <span>登录名称</span>
                                     </th>
                                     <th class="text-center">
-                                        <span>用户分组</span>
-                                    </th>
-                                    </th>
-                                    <th class="text-center">
-                                        <span>用户登录名</span>
+                                        <span>用户名称</span>
                                     </th>
                                     <th class="text-center">
-                                        <span>最后登录IP</span>
+                                        <span>用户状态</span>
                                     </th>
                                     <th class="text-center">
-                                        <span>状&nbsp;&nbsp;态</span>
+                                        <span>创建日期</span>
                                     </th>
                                     <th class="text-center" style="width: 35%">
                                         <span>操作</span>
@@ -146,51 +86,27 @@
                                     <c:when test="${page.getNumberOfElements() > 0}">
                                         <c:forEach items="${page.getContent()}" var="item">
                                             <tr>
-                                                <td class="text-center">${item.org.name}</td>
-                                                <td class="text-center">${item.userGrp.name}</td>
                                                 <td class="text-center">${item.loginName}</td>
-                                                <td class="text-center">${item.lastLoginIpAddr}</td>
+                                                <td class="text-center">${item.userName}</td>
                                                 <td class="text-center">
-                                                    <mytag:write dictName="D_USER_STATUS" value="${item.status}"></mytag:write>
-                                                    <%--<c:if test="${'0' eq item.status}">停用</c:if>--%>
-                                                    <%--<c:if test="${'1' eq item.status}">启用</c:if>--%>
+                                                    <mytag:write dictName="USER_STATUS" value="${item.status}"></mytag:write>
                                                 </td>
+                                                <td class="text-center">${item.createDate}</td>
                                                 <td style="width: 20%;">
-                                                    <a data-toggle="modal"
-                                                       href="<%=basePath%>/user/show?userId=${item.userId}"
-                                                       data-target="#myModal" class="table-link">
-                                                                查看
-                                                    </a>
                                                     <c:if test="${item.status eq '0'}">
                                                         <a class="table-link"
                                                            href="javascript:void(0);"
-                                                           onclick="deleteClick('您确定要开启${item.loginName}吗？', '<%=basePath%>/user/openUser?userId=${item.userId}')">
-                                                                    开启用户
+                                                           onclick="deleteClick('您确定要开启${item.loginName}吗？', '<%=basePath%>/user/openUser?id=${item.id}')">
+                                                            开启用户
                                                         </a>
                                                     </c:if>
                                                     <c:if test="${item.status eq '1'}">
                                                         <a class="table-link danger"
                                                            href="javascript:void(0);"
-                                                           onclick="deleteClick('您确定要关闭${item.loginName}吗？', '<%=basePath%>/user/closeUser?userId=${item.userId}')">
-                                                                    关闭用户
+                                                           onclick="deleteClick('您确定要关闭${item.loginName}吗？', '<%=basePath%>/user/closeUser?id=${item.id}')">
+                                                            关闭用户
                                                         </a>
                                                     </c:if>
-                                                    <a class="table-link"
-                                                       href="javascript:void(0);"
-                                                       onclick="deleteClick('您确定要重置${item.loginName}的密码吗？,重置密码后密码为：“111111”。', '<%=basePath%>/user/resetUserPwd?userId=${item.userId}')">
-                                                            重置密码
-                                                    </a>
-                                                    <a data-toggle="modal"
-                                                       href="<%=basePath%>/user/editUserForOrg?userId=${item.userId}"
-                                                       data-target="#myModal" class="table-link">
-                                                            重分机构
-                                                    </a>
-                                                    <a data-toggle="modal"
-                                                       href="<%=basePath%>/user/assignUserGrp?userId=${item.userId}"
-                                                       data-target="#myModal" class="table-link">
-                                                            分配分组
-                                                    </a>
-
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -217,8 +133,6 @@
 <script>
     // 查询数据
     var data = {};
-    data.orgId = '${query.orgId}';
-    data.userGrpId = '${query.userGrpId}';
     data.loginName = '${query.loginName}';
     data.status = '${query.status}';
     data.size = ${page.getSize()};
@@ -230,42 +144,6 @@
         if (field !== '')
             sortStr = sortStr + '&sort=' + field.replace(': ', ',');
     });
-    //初始化用户分组
-    if(${not empty query.userGrpId || query.userGrpId ne ""}){
-        console.log(${query.userGrpId});
-        addUserGrpOption("${query.orgId}");
-    }
-
-    //根据选择的orgId联动查询用户分组
-    function addUserGrpOption(checkOrgId) {
-        var userGrpId = '${query.userGrpId}';
-        console.log(checkOrgId);
-        if (checkOrgId != null && checkOrgId != "") {
-            $.ajax({
-                url: '<%=basePath%>/user/AJAX_findGrpByOrg',
-                type: "post",
-                data: {"orgId": checkOrgId},
-                dataType: "json",
-                success: function (data) {
-                    var options = $("#user_list_search_userGrpName");
-                    options.empty();
-                    options.append("<option value=''>--请选择--</option>")
-                    for (var i = 0; i < data.length; i++) {
-                        var a=data[i].userGrpId;
-                        var option=null;
-                        if (a == userGrpId) {
-                            option='<option selected value="'+a+'">'+data[i].name+'</option>';
-                        } else {
-                            option='<option value="'+a+'">'+data[i].name+'</option>';
-                        }
-                        console.log(option);
-                        options.append(option);
-                    }
-                }
-            })
-        }
-    }
-
     // 查询表单提交
     $("#form").validate({
         submitHandler: function (form) {

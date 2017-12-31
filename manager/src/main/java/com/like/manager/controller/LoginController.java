@@ -86,7 +86,7 @@ public class LoginController extends BaseController {
     @RequestMapping("/validate")
     public String validate(User user, Model model, HttpServletRequest request) {
         System.out.println("---------进入登录验证-----------");
-        System.out.println(user.getLoginName() + ":" + user.getPwd());
+        System.out.println(user.getLoginName() + ":" + user.getPassWord());
 
         Subject oldSubject = (Subject) ThreadContext.getResources().get(ThreadContext.SUBJECT_KEY);
         oldSubject.logout();
@@ -94,7 +94,7 @@ public class LoginController extends BaseController {
         String randomcode = request.getParameter("randomcode");
         String randomcodeYz = "";
 
-        if (user.getLoginName() == null && user.getPwd() == null) {
+        if (user.getLoginName() == null && user.getPassWord() == null) {
             model.addAttribute("returnMessage", "请先登录");
             return "security_pages/login";
         }
@@ -122,7 +122,7 @@ public class LoginController extends BaseController {
         }
 
         //创建用户名和密码的令牌
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPwd());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassWord());
         //记录该令牌，如果不记录则类似购物车功能不能使用。（官方建议开启，但是并未验证功能）
         token.setRememberMe(true);
 
@@ -161,7 +161,7 @@ public class LoginController extends BaseController {
         if (user == null) {
             return "security_pages/login";
         }
-        List<Role> roles = user.getUserGrp().getRoles();
+        List<Role> roles = user.getRoles();
         for (Role role : roles) {
             for (Permit permit : role.getPermits()) {
                 resIds.add(permit.getRes().getId());

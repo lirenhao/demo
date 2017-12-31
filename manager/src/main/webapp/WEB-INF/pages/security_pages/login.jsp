@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                        <input type="password" class="form-control" placeholder="密码" name="pwd" id="password">
+                                        <input type="passWord" class="form-control" placeholder="密码" name="passWord" id="passWord">
                                     </div>
                                     <div id="remember-me-wrapper">
                                         <div class="row">
@@ -72,12 +72,12 @@
 <script>
     function validate() {
         var name = $("input[name='loginName']").val();
-        var pwd = $("#password").val();
+        var passWord = $("#passWord").val();
         if (name == '') {
             $("#mess").text("请输入用户名!");
             return false;
         }
-        if (pwd == '') {
+        if (passWord == '') {
             $("#mess").text("请输入密码!");
             return false;
         }

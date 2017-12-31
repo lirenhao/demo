@@ -19,17 +19,25 @@ insert into res (id, name, res_type_id, p_id, action, order_no) values (3, '角�
 insert into permit (id, action_id, res_id, type_id) values (5, 1, 3, 1);
 insert into permit (id, action_id, res_id, type_id) values (6, 2, 3, 1);
 
+insert into res (id, name, res_type_id, p_id, action, order_no) values (4, '用户管理', 1, 1, '/user/list', 4);
+insert into permit (id, action_id, res_id, type_id) values (7, 1, 4, 1);
+insert into permit (id, action_id, res_id, type_id) values (8, 2, 4, 1);
+
 insert into role (id, remark, name) values (1, '管理员角色', 'admin');
-insert into role_permit (role_id, permit_id) VALUES (1, 1);
-insert into role_permit (role_id, permit_id) VALUES (1, 2);
-insert into role_permit (role_id, permit_id) VALUES (1, 3);
-insert into role_permit (role_id, permit_id) VALUES (1, 4);
-insert into role_permit (role_id, permit_id) VALUES (1, 5);
-insert into role_permit (role_id, permit_id) VALUES (1, 6);
+insert into role_permit (role_id, permit_id) values (1, 1);
+insert into role_permit (role_id, permit_id) values (1, 2);
+insert into role_permit (role_id, permit_id) values (1, 3);
+insert into role_permit (role_id, permit_id) values (1, 4);
+insert into role_permit (role_id, permit_id) values (1, 5);
+insert into role_permit (role_id, permit_id) values (1, 6);
+insert into role_permit (role_id, permit_id) values (1, 7);
+insert into role_permit (role_id, permit_id) values (1, 8);
 
-INSERT INTO org (org_id, eacq_org_id, name, online_flag, org_lev, p_org_id, status, tel, zone_code) VALUES ('00', NULL, '总机构', NULL, 0, NULL, '1', NULL, NULL);
+insert into user (id, login_name, pass_word, status, user_name) values (1, 'admin', 'C4CA4238A0B923820DCC509A6F75849B', '1', 'admin');
 
-insert into user_grp (user_grp_id, iht_flag, name, org_id) values (1, '1', 'admin', '00');
-INSERT INTO user_grp_role (user_grp_id, role_id) VALUES (1, 1);
+insert into user_role (user_id, role_id) values (1, 1);
 
-insert into user (user_id, login_name, org_id, pwd, status, user_grp_id, user_name) values (1, 'admin', '00', 'C4CA4238A0B923820DCC509A6F75849B', '1', 1, 'admin');
+insert into dict_list ( dict_type, dict_name) values ( 'USER_STATUS', '用户状态');
+
+insert into dict_item ( dict_type, dict_code, dict_name, dict_order) values ( 'USER_STATUS', '0', '停用', '1');
+insert into dict_item ( dict_type, dict_code, dict_name, dict_order) values ( 'USER_STATUS', '1', '启用', '2');

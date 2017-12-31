@@ -111,10 +111,4 @@ public class RoleService {
         }
         return node;
     }
-    /**
-     * 查询所有的角色
-     */
-    public List<Role> findAllUserGrp(){
-        return roleDao.findAll();
-    }
 }

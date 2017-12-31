@@ -42,8 +42,8 @@
 			<label for="user_list_edit_loginName">用户登录名:</label>
 			<input type="text" class="form-control" id="user_list_edit_loginName" name="loginName"
 				   value="${user.loginName}" readonly>
-			<input type="hidden" class="form-control" id="user_list_edit_userId" name="userId"
-				   value="${user.userId}" readonly>
+			<input type="hidden" class="form-control" id="user_list_edit_userId" name="id"
+				   value="${user.id}" readonly>
 		</div>
 		<div class="form-group">
 			<label for="user_list_edit_userName">用户名:</label>

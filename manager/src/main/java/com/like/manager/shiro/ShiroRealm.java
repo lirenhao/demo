@@ -28,7 +28,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (user != null) {
             //权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-            for (Role role : user.getUserGrp().getRoles()) {
+            for (Role role : user.getRoles()) {
                 for (Permit permit : role.getPermits()) {
                     // 判断资源是否可用
                     if (permit.getRes().getAction() != null
@@ -54,7 +54,7 @@ public class ShiroRealm extends AuthorizingRealm {
         User user = userService.findUserByLoginName(token.getUsername());
         if (user != null) {
             // 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
-            return new SimpleAuthenticationInfo(user.getLoginName(), user.getPwd(), getName());
+            return new SimpleAuthenticationInfo(user.getLoginName(), user.getPassWord(), getName());
         }
         return null;
     }

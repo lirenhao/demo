@@ -11,7 +11,7 @@
    <!-- DictSelectTag -->
    <tag>
 		<name>select</name>
-		<tag-class>com.yada.security.taglib.DictSelectTag</tag-class>
+		<tag-class>com.like.manager.taglib.DictSelectTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>
@@ -190,7 +190,7 @@
    <!-- DictWriteTag -->
    <tag>
 		<name>write</name>
-		<tag-class>com.yada.security.taglib.DictWriteTag</tag-class>
+		<tag-class>com.like.manager.taglib.DictWriteTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>dictName</name>
@@ -218,28 +218,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
-	
-   <!-- ParmTag -->
-   <tag>
-		<name>params</name>
-		<tag-class>com.yada.security.taglib.ParamTag</tag-class>
-		<body-content>JSP</body-content>
-		<attribute>
-			<name>includes</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>type</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
 
 	<!-- DictDateTag -->
 	<tag>
 		<name>date</name>
-		<tag-class>com.yada.security.taglib.DictDateTag</tag-class>
+		<tag-class>com.like.manager.taglib.DictDateTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>value</name>

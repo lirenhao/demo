@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
             <label for="user_list_create_pwd">用户密码:</label>
-            <input type="password" class="form-control" id="user_list_create_pwd" name="pwd" value="${user.pwd}"/>
+            <input type="passWord" class="form-control" id="user_list_create_pwd" name="passWord" value="${user.passWord}"/>
             <span style="color: red">请输入6位数以上密码</span>
         </div>
         <div class="form-group">
@@ -145,7 +145,7 @@
             status: {
                 required: true
             },
-            pwd: {
+            passWord: {
                 required: true,
                 minlength: "6"
             },
@@ -168,7 +168,7 @@
             status: {
                 required: "请选择用户状态！"
             },
-            pwd: {
+            passWord: {
                 required: "请输入密码！",
                 minlength: " "
             },

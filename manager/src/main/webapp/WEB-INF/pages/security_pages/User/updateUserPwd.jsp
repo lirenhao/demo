@@ -18,21 +18,21 @@
 			<label for="user_edit_loginName">用户登录名:</label>
 			<input type="text" class="form-control" id="user_edit_loginName" name="loginName"
 				   value="${user.loginName}" readonly/>
-			<input name="userId" type="hidden" value="${user.userId}" readonly/>
+			<input name="id" type="hidden" value="${user.id}" readonly/>
 		</div>
 		<div class="form-group">
 			<label for="user_edit_oldPwd">用户登录原密码:</label>
-			<input type="password" class="form-control" id="user_edit_oldPwd" name="oldPwd"/>
+			<input type="passWord" class="form-control" id="user_edit_oldPwd" name="oldPwd"/>
 			<span style="color: red" >*</span><span style="color: red">请输入6位数以上密码</span>
 		</div>
 		<div class="form-group">
 			<label for="user_edit_newPwd">用户登录新密码:</label>
-			<input type="password" class="form-control" id="user_edit_newPwd" name="newPwd"/>
+			<input type="passWord" class="form-control" id="user_edit_newPwd" name="newPwd"/>
 			<span style="color: red" >*</span><span style="color: red">请输入6位数以上密码</span>
 		</div>
 		<div class="form-group">
 			<label for="user_edit_retPwd">确认登录新密码:</label>
-			<input type="password" class="form-control" id="user_edit_retPwd" name="retPwd"/>
+			<input type="passWord" class="form-control" id="user_edit_retPwd" name="retPwd"/>
 			<span style="color: red">*</span><span style="color: red">请输入6位数以上密码</span>
 		</div>
 	</div>

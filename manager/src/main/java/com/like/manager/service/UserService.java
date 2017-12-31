@@ -1,11 +1,7 @@
 package com.like.manager.service;
 
-import com.like.manager.dao.OrgDao;
 import com.like.manager.dao.UserDao;
-import com.like.manager.dao.UserGrpDao;
-import com.like.manager.model.Org;
 import com.like.manager.model.User;
-import com.like.manager.model.UserGrp;
 import com.like.manager.query.UserQuery;
 import com.like.manager.util.Md5KeyBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Service
 @Transactional
@@ -24,34 +19,23 @@ public class UserService {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private UserGrpDao userGrpDao;
-    @Autowired
-    private OrgDao orgDao;
 
     /**
      * 增加用户
      */
-    public void save(User user, User loginUser) {
-        if (user.getUserId() == null || "".equals(user.getUserId())) {
+    public void save(User user) {
+        if (user.getId() == null || "".equals(user.getId().toString().trim())) {
             //添加创建时间
-            user.setCreateDateTime(getCurrTime());
-            //添加创建人id
-            user.setCreateUserId(loginUser.getUserId().toString());
+            user.setCreateDate(getCurrTime());
             //密码加密
             Md5KeyBean md5 = new Md5KeyBean();
-            user.setPwd(md5.getkeyBeanofStr(user.getPwd()));
-        }
-        if (user.getOrg() == null || user.getOrg().getOrg() == null || "".equals(user.getOrg().getOrgId())) {
-            user.setOrg(loginUser.getOrg());
+            user.setPassWord(md5.getkeyBeanofStr(user.getPassWord()));
         }
         userDao.saveAndFlush(user);
     }
 
     /**
      * 删除用户
-     *
-     * @author csj
      */
     public void delete(Long userId) {
         userDao.delete(userId);
@@ -59,26 +43,13 @@ public class UserService {
 
     /**
      * 根据登录名查询
-     *
-     * @author csj
      */
     public User findUserByLoginName(String loginName) {
         return userDao.findByLoginName(loginName);
     }
 
     /**
-     * 根据分组id查询
-     *
-     * @author csj
-     */
-    public List<User> findByUserGrp_UserGrpId(Long userGrpId) {
-        return userDao.findByUserGrp_UserGrpId(userGrpId);
-    }
-
-    /**
      * 分页动态查询
-     *
-     * @author csj
      */
     public Page<User> queryPage(UserQuery query, Pageable pageable) {
         return userDao.findAll(query, pageable);
@@ -92,9 +63,7 @@ public class UserService {
         User user = userDao.findOne(userId);
         Md5KeyBean md5 = new Md5KeyBean();
         //重置
-        user.setPwd(md5.getkeyBeanofStr("111111"));
-        //记录更新时间
-        user.setLastChgPwdDateTime(getCurrTime());
+        user.setPassWord(md5.getkeyBeanofStr("111111"));
         //保存
         userDao.saveAndFlush(user);
     }
@@ -106,9 +75,7 @@ public class UserService {
         User tempUser = userDao.findOne(userId);
         Md5KeyBean md5 = new Md5KeyBean();
         //修改
-        tempUser.setPwd(md5.getkeyBeanofStr(newPwd));
-        //记录更新时间
-        tempUser.setLastChgPwdDateTime(getCurrTime());
+        tempUser.setPassWord(md5.getkeyBeanofStr(newPwd));
         //保存
         userDao.saveAndFlush(tempUser);
     }
@@ -136,25 +103,7 @@ public class UserService {
     }
 
     /**
-     * 保存重新分配用户分组和机构
-     */
-    public void assignUserGrpOrOrg(Long userId, String userGrpId, String orgId) {
-        //分配
-        User tempUser = userDao.findOne(userId);
-        if (userGrpId != null && !"".equals(userGrpId.trim())) {
-            UserGrp userGrp = userGrpDao.findOne(Long.parseLong(userGrpId));
-            tempUser.setUserGrp(userGrp);
-        }
-        if (orgId != null && !"".equals(orgId.trim())) {
-            Org org = orgDao.findOne(orgId);
-            tempUser.setOrg(org);
-        }
-        userDao.saveAndFlush(tempUser);
-    }
-    /**
      * 根据查询登陆名的个数验证登陆名是否存在
-     *
-     * @author csj
      */
     public String countByLoginName(String loginName){
        int num=userDao.countByLoginName(loginName);

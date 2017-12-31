@@ -7,7 +7,7 @@
 <fieldset style="margin: 10px 0;padding: 10px;border: #DDD 1px solid" >
 	<legend>用户编辑</legend>
 	<mvc:form action="update.do" theme="simple"  method="post"  data-dojo-type="dijit.form.Form">
-		<input type="hidden" name="userId" value="${user.userId}" />
+		<input type="hidden" name="id" value="${user.id}" />
 		<script type="dojo/on" data-dojo-event="submit">
 		if(this.validate()){
 					if(check()){
@@ -144,7 +144,7 @@
 		    	&lt;%&ndash;<tr>
 			        <td class="lgridlist">用户密码:</td>
 				    <td >
-			             <input data-dojo-type="dijit.form.ValidationTextBox" required="true" data-dojo-props="trim:true" name="pwd" size="40"  />
+			             <input data-dojo-type="dijit.form.ValidationTextBox" required="true" data-dojo-props="trim:true" name="passWord" size="40"  />
 			             <span style="color: red">如需更改,请输入新密码!</span>
 			        </td>
 		  		</tr>
@@ -152,7 +152,7 @@
 				<tr>
 					<td></td>
 					<td >
-						<input type="hidden" name="pwd" size="40" value="${user.pwd}" />
+						<input type="hidden" name="passWord" size="40" value="${user.passWord}" />
 					</td>
 				</tr>
 

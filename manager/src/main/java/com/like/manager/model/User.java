@@ -1,9 +1,9 @@
 package com.like.manager.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "LOGIN_NAME")})
 public class User {
     public static final String TABLE_ALIAS = "用户";
     public static final String ALIAS_USER_ID = "用户ID";
@@ -29,108 +29,52 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_ID", nullable = false)
-    private Long userId;
+    @Column
+    private Long id;
     /**
      * 登录名
      */
-    @Column(name = "LOGIN_NAME", nullable = false, unique = true, length = 32)
+    @Column(nullable = false, unique = true, length = 32)
     private String loginName;
     /**
      * 密码
      */
-    @Column(name = "PWD", length = 32)
-    private String pwd;
+    @Column
+    private String passWord;
     /**
      * 用户名
      */
-    @Column(name = "USER_NAME", length = 32)
+    @Column
     private String userName;
-    /**
-     * 描述
-     */
-    @Column(name = "REMARK", length = 128)
-    private String remark;
-    /**
-     * 电话
-     */
-    @Column(name = "PHONE_NO", length = 16)
-    private String phoneNo;
-
-    /**
-     * 员工号
-     */
-    @Column(name = "STAFF_ID")
-    private Long staffId;
-    /**
-     * 最后登录IP
-     */
-    @Column(name = "LAST_LOGIN_IP_ADDR", length = 15)
-    private String lastLoginIpAddr;
-    /**
-     * 最后登录时间
-     */
-    @Column(name = "LAST_LOGIN_DATE_TIME", length = 14)
-    private String lastLoginDateTime;
-    /**
-     * 最后登出时间
-     */
-    @Column(name = "LAST_LOGOUT_DATE_TIME", length = 14)
-    private String lastLogoutDateTime;
-    /**
-     * 登录总次数
-     */
-    @Column(name = "LOGIN_CNT")
-    private Long loginCnt;
-    /**
-     * 最后修改密码时间
-     */
-    @Column(name = "LAST_CHG_PWD_DATE_TIME", length = 14)
-    private String lastChgPwdDateTime;
     /**
      * 创建时间
      */
-    @Column(name = "CREATE_DATE_TIME", length = 14)
-    private String createDateTime;
-    /**
-     * 创建用户
-     */
-    @Column(name = "CREATE_USER_ID")
-    private String createUserId;
+    @Column
+    private String createDate;
     /**
      * 用户状态(0:停用,1:启用)
      */
-    @Column(name = "STATUS", length = 1)
+    @Column
     private String status;
     /**
-     * 用户登录失败次数
+     * 描述
      */
-    @Column(name = "LOGIN_FAILED_CNT")
-    private Long loginFailedCnt;
+    @Column
+    private String remark;
     /**
-     * 最后登录失败时间
+     * 角色
      */
-    @Column(name = "LAST_LOGIN_FAILED_DATE_TIME", length = 14)
-    private String lastLoginFailedDateTime;
-    /**
-     * 用户分组
-     */
-    @ManyToOne
-    @JoinColumn(name = "USER_GRP_ID", referencedColumnName = "USER_GRP_ID")
-    private UserGrp userGrp;
-    /**
-     * 机构
-     */
-    @ManyToOne
-    @JoinColumn(name = "ORG_ID", referencedColumnName = "ORG_ID")
-    private Org org;
+    @ManyToMany
+    @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    private List<Role> roles;
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLoginName() {
@@ -141,12 +85,12 @@ public class User {
         this.loginName = loginName;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getUserName() {
@@ -157,84 +101,12 @@ public class User {
         this.userName = userName;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public Long getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(Long staffId) {
-        this.staffId = staffId;
-    }
-
-    public String getLastLoginIpAddr() {
-        return lastLoginIpAddr;
-    }
-
-    public void setLastLoginIpAddr(String lastLoginIpAddr) {
-        this.lastLoginIpAddr = lastLoginIpAddr;
-    }
-
-    public String getLastLoginDateTime() {
-        return lastLoginDateTime;
-    }
-
-    public void setLastLoginDateTime(String lastLoginDateTime) {
-        this.lastLoginDateTime = lastLoginDateTime;
-    }
-
-    public String getLastLogoutDateTime() {
-        return lastLogoutDateTime;
-    }
-
-    public void setLastLogoutDateTime(String lastLogoutDateTime) {
-        this.lastLogoutDateTime = lastLogoutDateTime;
-    }
-
-    public Long getLoginCnt() {
-        return loginCnt;
-    }
-
-    public void setLoginCnt(Long loginCnt) {
-        this.loginCnt = loginCnt;
-    }
-
-    public String getLastChgPwdDateTime() {
-        return lastChgPwdDateTime;
-    }
-
-    public void setLastChgPwdDateTime(String lastChgPwdDateTime) {
-        this.lastChgPwdDateTime = lastChgPwdDateTime;
-    }
-
-    public String getCreateDateTime() {
-        return createDateTime;
-    }
-
-    public void setCreateDateTime(String createDateTime) {
-        this.createDateTime = createDateTime;
-    }
-
-    public String getCreateUserId() {
-        return createUserId;
-    }
-
-    public void setCreateUserId(String createUserId) {
-        this.createUserId = createUserId;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     public String getStatus() {
@@ -245,36 +117,19 @@ public class User {
         this.status = status;
     }
 
-    public Long getLoginFailedCnt() {
-        return loginFailedCnt;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setLoginFailedCnt(Long loginFailedCnt) {
-        this.loginFailedCnt = loginFailedCnt;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getLastLoginFailedDateTime() {
-        return lastLoginFailedDateTime;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setLastLoginFailedDateTime(String lastLoginFailedDateTime) {
-        this.lastLoginFailedDateTime = lastLoginFailedDateTime;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
-
-    public UserGrp getUserGrp() {
-        return userGrp;
-    }
-
-    public void setUserGrp(UserGrp userGrp) {
-        this.userGrp = userGrp;
-    }
-
-    public Org getOrg() {
-        return org;
-    }
-
-    public void setOrg(Org org) {
-        this.org = org;
-    }
-
 }

@@ -61,7 +61,7 @@
                 <td>${model.lastChgPwdDateTime}</td>
 
                 <td ><%=User.ALIAS_CREATE_DATE_TIME%>:</td>
-                <td>${model.createDateTime}</td>
+                <td>${model.createDate}</td>
             </tr>
             <tr>
                 <td style="display:none"></td>

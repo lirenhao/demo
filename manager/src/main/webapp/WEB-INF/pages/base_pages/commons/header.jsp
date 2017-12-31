@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="table-link" data-target="#myModal" data-toggle="modal"
-                                   href="<%=basePath%>/user/updateUserPwd?userId=${user.userId}">
+                                   href="<%=basePath%>/user/updateUserPwd?id=${user.id}">
                                     <i class="fa fa-lock"></i>修改密码</a>
                             </li>
                             <li>

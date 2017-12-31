@@ -13,15 +13,9 @@ public class DictItem {
     @Column
     private String dictCode;
     @Column
-    private String dictCodeName;
-    @Column
-    private String dictPinyin;
+    private String dictName;
     @Column
     private String dictOrder;
-    @Column
-    private String dictFlag;
-    @Column
-    private String dictCodeParent;
 
     public String getDictType() {
         return dictType;
@@ -39,20 +33,12 @@ public class DictItem {
         this.dictCode = dictCode;
     }
 
-    public String getDictCodeName() {
-        return dictCodeName;
+    public String getDictName() {
+        return dictName;
     }
 
-    public void setDictCodeName(String dictCodeName) {
-        this.dictCodeName = dictCodeName;
-    }
-
-    public String getDictPinyin() {
-        return dictPinyin;
-    }
-
-    public void setDictPinyin(String dictPinyin) {
-        this.dictPinyin = dictPinyin;
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
     }
 
     public String getDictOrder() {
@@ -61,21 +47,5 @@ public class DictItem {
 
     public void setDictOrder(String dictOrder) {
         this.dictOrder = dictOrder;
-    }
-
-    public String getDictFlag() {
-        return dictFlag;
-    }
-
-    public void setDictFlag(String dictFlag) {
-        this.dictFlag = dictFlag;
-    }
-
-    public String getDictCodeParent() {
-        return dictCodeParent;
-    }
-
-    public void setDictCodeParent(String dictCodeParent) {
-        this.dictCodeParent = dictCodeParent;
     }
 }
