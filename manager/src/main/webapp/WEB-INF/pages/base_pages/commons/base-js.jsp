@@ -5,10 +5,6 @@
 <script src="<%=basePath%>/js/bootstrap.js"></script>
 <script src="<%=basePath%>/js/jquery.nanoscroller.min.js"></script>
 
-<%--主题控制--%>
-<%--<script src="<%=basePath%>/js/demo.js"></script>--%>
-<%--<script src="<%=basePath%>/js/demo-skin-changer.js"></script>--%>
-
 <script src="<%=basePath%>/js/moment.min.js"></script>
 <script src="<%=basePath%>/js/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="<%=basePath%>/js/jquery-jvectormap-world-merc-en.js"></script>
