@@ -19,8 +19,8 @@
             <input type="text" class="form-control" id="name" name="name" value="${res.name}">
         </div>
         <div class="form-group">
-            <label for="actionName">资源动作</label>
-            <input type="text" class="form-control" id="actionName" name="actionName" value="${res.actionName}">
+            <label for="action">资源动作</label>
+            <input type="text" class="form-control" id="action" name="action" value="${res.action}">
         </div>
         <div class="form-group">
             <label for="icon">资源图标</label>
@@ -50,7 +50,7 @@
             name: {
                 required: true
             },
-            actionName: {
+            action: {
                 checkAction: true
             }
         },
