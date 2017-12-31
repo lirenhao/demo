@@ -34,18 +34,18 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="from-group col-md-12">
-                                                <label for="roleName">角色名称</label>
-                                                <input type="text" class="form-control" id="roleName" name="roleName"
-                                                       value="${roleQuery.roleName}">
+                                                <label for="name">角色名称</label>
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                       value="${roleQuery.name}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="from-group col-md-12">
-                                                <label for="dsc">角色描述</label>
-                                                <input type="text" class="form-control" id="dsc"
-                                                       name="dsc" value="${roleQuery.dsc}">
+                                                <label for="remark">角色描述</label>
+                                                <input type="text" class="form-control" id="remark"
+                                                       name="remark" value="${roleQuery.remark}">
                                             </div>
                                         </div>
                                     </div>
@@ -66,8 +66,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">
-                                        <a class="${page.getSort().getOrderFor('roleName')}"
-                                           href="javascript:void(0);" onclick="sortSearch(this)" sort="roleName">
+                                        <a class="${page.getSort().getOrderFor('name')}"
+                                           href="javascript:void(0);" onclick="sortSearch(this)" sort="name">
                                             <span>角色名称</span>
                                         </a>
                                     </th>
@@ -80,25 +80,25 @@
                                     <c:when test="${page.getTotalElements() > 0}">
                                         <c:forEach items="${page.getContent()}" var="item">
                                             <tr>
-                                                <td class="text-center">${item.roleName}</td>
-                                                <td class="text-center">${item.dsc}</td>
+                                                <td class="text-center">${item.name}</td>
+                                                <td class="text-center">${item.remark}</td>
                                                 <td style="width: 15%;">
                                                     <a data-toggle="modal" data-target="#myModal" class="table-link"
-                                                       href="<%=basePath%>/role/edit?id=${item.roleId}">
+                                                       href="<%=basePath%>/role/edit?id=${item.id}">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </a>
                                                     <a data-toggle="modal" data-target="#myModal" class="table-link"
-                                                       href="<%=basePath%>/role/permit?id=${item.roleId}">
+                                                       href="<%=basePath%>/role/permit?id=${item.id}">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </a>
                                                     <a href="javascript:void(0);" class="table-link danger"
-                                                       onclick="deleteClick('${item.roleName}', '<%=basePath%>/role/delete?id=${item.roleId}')">
+                                                       onclick="deleteClick('${item.name}', '<%=basePath%>/role/delete?id=${item.id}')">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -130,8 +130,8 @@
 <script>
     // 查询数据
     var data = {};
-    data.roleName = '${roleQuery.roleName}';
-    data.dsc = '${roleQuery.dsc}';
+    data.name = '${roleQuery.name}';
+    data.remark = '${roleQuery.remark}';
     data.size = ${page.getSize()};
     data.page = ${page.getNumber()};
     // 排序数据

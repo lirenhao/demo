@@ -14,8 +14,8 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-            <label for="menuName">资源名称</label>
-            <input type="text" class="form-control" id="menuName" name="menuName">
+            <label for="name">资源名称</label>
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="form-group">
             <label for="actionName">资源动作</label>
@@ -26,11 +26,11 @@
             <input type="text" class="form-control" id="icon" name="icon">
         </div>
         <div class="form-group">
-            <label for="dsc">资源描述</label>
-            <textarea class="form-control" id="dsc" name="dsc" rows="3"></textarea>
+            <label for="remark">资源描述</label>
+            <textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
         </div>
-        <input type="hidden" name="res.menuResId" value="${pid}"/>
-        <input type="hidden" name="resType.typeId" value="${typeId}"/>
+        <input type="hidden" name="res.id" value="${pid}"/>
+        <input type="hidden" name="resType.id" value="${typeId}"/>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -48,7 +48,7 @@
         '请输入合法的Action名称');
     $("#form").validate({
         rules: {
-            menuName: {
+            name: {
                 required: true
             },
             actionName: {

@@ -13,14 +13,14 @@
         <h4 class="modal-title">角色编辑</h4>
     </div>
     <div class="modal-body">
-        <input type="hidden" name="roleId" value="${role.roleId}" readonly>
+        <input type="hidden" name="id" value="${role.id}" readonly>
         <div class="form-group">
-            <label for="roleName">角色名称</label>
-            <input type="text" class="form-control" id="roleName" name="roleName" value="${role.roleName}">
+            <label for="name">角色名称</label>
+            <input type="text" class="form-control" id="name" name="name" value="${role.name}">
         </div>
         <div class="form-group">
-            <label for="dsc">角色描述</label>
-            <textarea class="form-control" id="dsc" name="dsc" rows="3" value="${role.dsc}">${role.dsc}</textarea>
+            <label for="remark">角色描述</label>
+            <textarea class="form-control" id="remark" name="remark" rows="3" value="${role.remark}">${role.remark}</textarea>
         </div>
     </div>
     <div class="modal-footer">
@@ -32,10 +32,10 @@
     // 表单验证
     $("#form").validate({
         rules: {
-            roleName: {
+            name: {
                 required: true
             },
-            dsc: {
+            remark: {
                 required: true
             }
         },

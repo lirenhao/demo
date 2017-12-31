@@ -55,6 +55,8 @@ public class ShiroConfig {
         filterChainDefinitionManager.put("/login/frame", "authc");
         filterChainDefinitionManager.put("/login/logout", "logout");
 
+        filterChainDefinitionManager.put("/init/url", "anon");
+
         filterChainDefinitionManager.put("/**", "authc");
         filterChainDefinitionManager.put("/**", "permit");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionManager);

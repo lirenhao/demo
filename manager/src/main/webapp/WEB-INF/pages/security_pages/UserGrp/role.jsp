@@ -26,13 +26,13 @@
             <label>角色列表：</label>
             <c:forEach items="${roleList}" var="item1">
                 <div class="checkbox-nice">
-                    <input type="checkbox" id="${item1.roleId}" value="${item1.roleId}" name="roles"
+                    <input type="checkbox" id="${item1.id}" value="${item1.id}" name="roles"
                     <c:forEach items="${userGrp.roles}" var="item2">
-                           <c:if test="${item2.roleId==item1.roleId}">checked</c:if>
+                           <c:if test="${item2.id==item1.id}">checked</c:if>
                     </c:forEach>
                     />
-                    <label for="${item1.roleId}">
-                            ${item1.roleName}
+                    <label for="${item1.id}">
+                            ${item1.name}
                     </label>
                 </div>
             </c:forEach>

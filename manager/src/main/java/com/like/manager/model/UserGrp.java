@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "T_P_SHIRO_USER_GRP")
 public class UserGrp {
     public static final String TABLE_ALIAS = "用户分组";
     public static final String ALIAS_NAME = "用户分组名称";

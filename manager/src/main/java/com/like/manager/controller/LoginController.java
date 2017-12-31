@@ -172,16 +172,16 @@ public class LoginController extends BaseController {
         for (Res res : menuList) {
             if (resIds.contains(res.getId())) {
                 JSONObject menu = new JSONObject();
-                menu.put("menuName", res.getName());
-                menu.put("actionName", res.getAction());
+                menu.put("name", res.getName());
+                menu.put("action", res.getAction());
                 menu.put("icon", res.getIcon());
                 JSONArray children = new JSONArray();
                 if (res.getChildren() != null && res.getChildren().size() > 0) {
                     for (Res subRes : res.getChildren()) {
                         if (resIds.contains(subRes.getId())) {
                             JSONObject subMenu = new JSONObject();
-                            subMenu.put("menuName", subRes.getName());
-                            subMenu.put("actionName", subRes.getAction());
+                            subMenu.put("name", subRes.getName());
+                            subMenu.put("action", subRes.getAction());
                             menu.put("icon", res.getIcon());
                             children.add(subMenu);
                         }

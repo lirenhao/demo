@@ -3,7 +3,7 @@ package com.like.manager.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "T_P_SHIRO_USER", uniqueConstraints = {@UniqueConstraint(columnNames = "LOGIN_NAME")})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "LOGIN_NAME")})
 public class User {
     public static final String TABLE_ALIAS = "用户";
     public static final String ALIAS_USER_ID = "用户ID";

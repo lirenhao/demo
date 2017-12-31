@@ -5,21 +5,21 @@
 %>
 <ol class="dd-list">
     <c:forEach items="${urlList}" var="url">
-        <li class="dd-item" data-menuResId="${url.menuResId}">
+        <li class="dd-item" data-id="${url.id}">
             <div class="dd-handle">
-                    ${url.menuName}
+                    ${url.name}
                 <div class="dd-nodrag nested-links">
                     <a data-toggle="modal" data-target="#myModal" class="nested-link"
-                       href="<%=basePath%>/res/edit?id=${url.menuResId}">
+                       href="<%=basePath%>/res/edit?id=${url.id}">
                         <i class="fa fa-pencil"></i>
                     </a>
                     <a data-toggle="modal" data-target="#myModal" class="nested-link"
-                       href="<%=basePath%>/res/create?type=url&pid=${url.menuResId}">
+                       href="<%=basePath%>/res/create?type=url&pid=${url.id}">
                         <i class="fa fa-plus"></i>
                     </a>
                     <c:if test="${empty url.children}">
                         <a href="javascript:void(0);" class="nested-link"
-                           onclick="deleteClick('${url.menuName}', '<%=basePath%>/res/delete?id=${url.menuResId}')">
+                           onclick="deleteClick('${url.name}', '<%=basePath%>/res/delete?id=${url.id}')">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     </c:if>

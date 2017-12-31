@@ -28,14 +28,14 @@
                             <a href="#" class="dropdown-toggle">
                                 <%--<i class="fa fa-desktop"></i>--%>
                                     <i class="${menu.icon}"></i>
-                                <span>${menu.menuName}</span>
+                                <span>${menu.name}</span>
                                 <i class="fa fa-angle-right drop-icon"></i>
                             </a>
                             <ul class="submenu">
                                 <c:forEach items="${menu.children}" var="submenu">
                                     <li style="cursor: hand">
-                                        <a onclick="menuClick(this);$('#page').load('<%=basePath%>${submenu.actionName}');">
-                                                ${submenu.menuName}
+                                        <a onclick="menuClick(this);$('#page').load('<%=basePath%>${submenu.action}');">
+                                                ${submenu.name}
                                         </a>
                                     </li>
                                 </c:forEach>

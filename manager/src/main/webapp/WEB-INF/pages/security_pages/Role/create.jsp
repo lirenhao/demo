@@ -14,12 +14,12 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-            <label for="roleName">角色名称</label>
-            <input type="text" class="form-control" id="roleName" name="roleName">
+            <label for="name">角色名称</label>
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="form-group">
-            <label for="dsc">角色描述</label>
-            <textarea class="form-control" id="dsc" name="dsc" rows="3"></textarea>
+            <label for="remark">角色描述</label>
+            <textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
         </div>
     </div>
     <div class="modal-footer">
@@ -31,7 +31,7 @@
     // 表单验证
     $("#form").validate({
         rules: {
-            roleName: {
+            name: {
                 required: true
             },
             tertiaryName: {

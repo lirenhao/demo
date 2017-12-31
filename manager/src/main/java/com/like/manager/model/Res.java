@@ -54,14 +54,14 @@ public class Res {
      * 资源的父级资源
      */
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "P_ID", referencedColumnName = "ID")
     private Res res;
 
     /**
      * 资源的子级资源
      */
     @OneToMany(mappedBy = "res")
-    @OrderBy("order ASC")
+    @OrderBy("orderNo ASC")
     private Set<Res> children;
 
     public Long getId() {
