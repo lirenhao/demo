@@ -33,7 +33,7 @@ insert into role_permit (role_id, permit_id) values (1, 6);
 insert into role_permit (role_id, permit_id) values (1, 7);
 insert into role_permit (role_id, permit_id) values (1, 8);
 
-insert into user (id, login_name, pass_word, status, user_name) values (1, 'admin', 'C4CA4238A0B923820DCC509A6F75849B', '1', 'admin');
+insert into user (id, login_name, pass_word, status, user_name, create_date) values (1, 'admin', 'C4CA4238A0B923820DCC509A6F75849B', '1', 'admin', '20171231173600');
 
 insert into user_role (user_id, role_id) values (1, 1);
 
