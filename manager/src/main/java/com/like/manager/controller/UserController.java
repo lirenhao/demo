@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,7 +31,7 @@ public class UserController extends BaseController {
      * 查询用户
      */
     @RequestMapping("/list")
-    public String list(Model model, @ModelAttribute("query") UserQuery query, @PageableDefault Pageable pageable) {
+    public String list(Model model, @ModelAttribute UserQuery query, @PageableDefault Pageable pageable) {
         Page page = userService.queryPage(query, pageable);
         model.addAttribute("page", page);
         return "security_pages/User/list";

@@ -112,6 +112,11 @@
                                                        data-target="#myModal" class="table-link">
                                                         分配角色
                                                     </a>
+                                                    <a class="table-link"
+                                                       href="javascript:void(0);"
+                                                       onclick="deleteClick('您确定要重置${item.loginName}的密码吗？,重置密码后密码为：“111111”。', '<%=basePath%>/user/resetUserPwd?userId=${item.id}')">
+                                                        重置密码
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
