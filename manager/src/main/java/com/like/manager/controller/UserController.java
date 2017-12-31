@@ -50,7 +50,7 @@ public class UserController extends BaseController {
      * 保存新增用户数据，返回到list页面
      */
     @RequestMapping("/save")
-    public String save(User user, String orgId, Long userGrpId) {
+    public String save(User user) {
         int flag = Integer.parseInt(userService.countByLoginName(user.getLoginName()));
         if (flag > 0) {
             //TODO 已存在处理
