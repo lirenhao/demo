@@ -9,7 +9,7 @@
     <jsp:include page="base-css.jsp"/>
 </head>
 
-<body class="fixed-header fixed-leftmenu fixed-footer theme-turquoise">
+<body class="fixed-header fixed-leftmenu fixed-footer theme-turquoise" style="overflow-x: hidden;overflow-y: auto">
 <%-- 弹出框 --%>
 <div class="modal fade" id="myModal" aria-labelledby="myModalLabel" aria-hidden="true" role="dialog">
     <div class="modal-dialog">
@@ -18,7 +18,7 @@
 </div>
 <div id="theme-wrapper">
     <jsp:include page="header.jsp"/>
-    <div id="page-wrapper" class="container">
+    <div id="page-wrapper" class="container" style="height: 96%">
         <div class="row">
             <jsp:include page="menu.jsp"/>
             <div id="content-wrapper">

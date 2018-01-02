@@ -29,7 +29,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<%=basePath%>/img/samples/user.jpg" alt=""/>
                             <span class="hidden-xs">${user.loginName}</span>
-                            <b class="caret"></b>
+                            <b class="caret" style="margin-top:15px"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
