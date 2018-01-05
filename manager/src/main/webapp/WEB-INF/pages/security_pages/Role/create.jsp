@@ -7,7 +7,7 @@
     <title>角色新增</title>
 </head>
 <body>
-<form id="form">
+<form id="createForm">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">角色新增</h4>
@@ -29,7 +29,7 @@
 </form>
 <script>
     // 表单验证
-    $("#form").validate({
+    $("#createForm").validate({
         rules: {
             name: {
                 required: true

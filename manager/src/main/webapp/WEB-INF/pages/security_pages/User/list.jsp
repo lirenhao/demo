@@ -27,7 +27,7 @@
                     </header>
                     <div class="main-box-body clearfix">
                         <div class="row main-box-body">
-                            <form id="form">
+                            <form id="listForm">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="row">
@@ -168,7 +168,7 @@
             sortStr = sortStr + '&sort=' + field.replace(': ', ',');
     });
     // 查询表单提交
-    $("#form").validate({
+    $("#listForm").validate({
         submitHandler: function (form) {
             $.each($(form).serializeArray(), function (i, field) {
                 data[field.name] = field.value;
@@ -179,7 +179,7 @@
     });
     // 分页控件
     $('#paging').jqPaginator({
-        totalCounts: ${page.getTotalElements()},
+        totalCounts: ${page.getTotalElements()==0? 1: page.getTotalElements()},
         currentPage: ${page.getNumber()} +1,
         pageSize: ${page.getSize()},
         visiblePages: 5, // 最多展示几个分页数

@@ -7,7 +7,7 @@
     <title>角色编辑</title>
 </head>
 <body>
-<form id="form">
+<form id="editForm">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">角色编辑</h4>
@@ -30,7 +30,7 @@
 </form>
 <script>
     // 表单验证
-    $("#form").validate({
+    $("#editForm").validate({
         rules: {
             name: {
                 required: true

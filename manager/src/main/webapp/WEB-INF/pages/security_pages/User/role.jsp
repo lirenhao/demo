@@ -9,7 +9,7 @@
     <title>用户维护</title>
 </head>
 <body>
-<form id="form">
+<form id="roleForm">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">用户分配角色</h4>
@@ -44,7 +44,7 @@
 </form>
 <script>
     // 表单验证
-    $("#form").validate({
+    $("#roleForm").validate({
         submitHandler: function (form) {
             $('#page').load('<%=basePath%>/user/saveRoles', $(form).serializeArray(), function () {
                 $('#myModal').modal('hide');

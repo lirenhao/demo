@@ -9,7 +9,7 @@
     <title>新增用户</title>
 </head>
 <body>
-<form id="form">
+<form id="createForm">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">新增用户</h4>
@@ -48,7 +48,7 @@
         return this.optional(element) || (chrnum.test(value));
     }, "只能输入数字和字母(字符A-Z, a-z, 0-9)");
     //表单验证
-    $("#form").validate({
+    $("#createForm").validate({
         rules: {
             loginName: {
                 required: true,
